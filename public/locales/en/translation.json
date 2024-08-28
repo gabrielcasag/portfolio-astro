@@ -1,0 +1,27 @@
+{
+    "site": {
+        "title": "Porfolio",
+        "description": "Here is the description of my awesome website!"
+    },
+    "header": {
+        "about": "About",
+        "experience": "Experience",
+        "projects": "Projects",
+        "contact": "Contact"
+    },
+    "hero": {
+        "greeting": "Hi, I'm",
+        "role": "Full Stack Software Engineer",
+        "description": "Passionate about creating robust and scalable web applications. Experienced in both frontend and backend technologies."
+    },
+    "buttons": {
+        "downloadCV": "Download my CV",
+        "contact": "Reach me out!"
+    },
+    "experience": {
+        "title": "I already worked with these companies and technologies"
+    },
+    "projects": {
+        "construct": "Under construction..."
+    }
+}

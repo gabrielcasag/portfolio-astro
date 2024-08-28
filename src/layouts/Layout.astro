@@ -1,50 +1,202 @@
 ---
 interface Props {
-	title: string;
+  title: string;
 }
 
-const { title } = Astro.props;
+// const { title } = Astro.props;
+
+import i18next, { t } from "i18next";
+import { HeadHrefLangs } from "astro-i18next/components";
+import Header from "../components/Header.astro";
+import BackToTop from "../components/BackToTop.astro";
 ---
 
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang={i18next.language}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+
+    <meta name="description" content={t("site.description")} />
+
+    <link rel="icon" type="image/png" href="/house2.png" />
+
+    <HeadHrefLangs />
+
+    <title>{t("site.title")}</title>
+  </head>
+  <body id="app">
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <BackToTop />
+  </body>
 </html>
+
 <style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
+  :root {
+    --accent: rgb(24, 133, 117);
+    --secondary: rgb(229, 163, 65);
+    --white: rgb(240, 240, 240);
+    --black: rgb(18, 18, 18);
+    --beige: rgb(225, 205, 180);
+    --border: rgb(38 38 38 / 0.35);
+    --radius: 0.75rem;
+    --border-size: 2px;
+
+    --light-background: var(--white);
+    --light-foreground: var(--black);
+    --dark-background: var(--black);
+    --dark-foreground: var(--white);
+
+    --background: var(--dark-background);
+    --foreground: var(--dark-foreground);
+
+    --linear-gradient: linear-gradient(
+      90deg,
+      var(--foreground) 0%,
+      var(--beige) 33%,
+      var(--secondary) 66%,
+      var(--accent) 100%
+    );
+
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+    color-scheme: light dark;
+    background-color: var(--background);
+    color: var(--foreground);
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  a {
+    font-weight: 600;
+    text-decoration: inherit;
+    color: inherit;
+  }
+
+  li {
+    list-style-type: none;
+  }
+
+  #app {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root {
+      --background: var(--light-background);
+      --foreground: var(--light-foreground);
+    }
+  }
+
+  html {
+    font-family: system-ui, sans-serif;
+    background: #13151a;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--background);
+  }
+
+  /* 
+  Animations 
+*/
+  @keyframes textShine {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 100% 100%;
+    }
+  }
+
+  @keyframes shake {
+    0% {
+      transform: rotate(0deg);
+    }
+    10% {
+      transform: rotate(18deg);
+    }
+    20% {
+      transform: rotate(-8deg);
+    }
+    30% {
+      transform: rotate(14deg);
+    }
+    40% {
+      transform: rotate(-4deg);
+    }
+    45% {
+      transform: rotate(10deg);
+    }
+    55% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  @keyframes buttonShine {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: -200% 0;
+    }
+  }
+
+  @keyframes rotate {
+    to {
+      transform: rotate(360deg);
+    }
+  }
 </style>
+
+<script>
+  const header = document.querySelector("header");
+  const experienceSection = document.querySelector("#experience__section");
+
+  let lastScrollY = window.scrollY;
+
+  function handleScroll() {
+    const currentScrollY = window.scrollY;
+    const experienceSectionTop =
+      experienceSection!.getBoundingClientRect().top + window.scrollY;
+
+    if (
+      currentScrollY > lastScrollY &&
+      currentScrollY > experienceSectionTop - 100
+    ) {
+      header!.classList.add("hidden");
+    } else if (
+      currentScrollY < lastScrollY ||
+      currentScrollY < experienceSectionTop - 200
+    ) {
+      header!.classList.remove("hidden");
+    }
+
+    lastScrollY = currentScrollY;
+  }
+
+  window.addEventListener("scroll", handleScroll);
+</script>

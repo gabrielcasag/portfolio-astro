@@ -1,0 +1,27 @@
+{
+    "site": {
+        "title": "Portfólio",
+        "description": "Descrição do meu site!"
+    },
+    "header": {
+        "about": "Sobre",
+        "experience": "Experiência",
+        "projects": "Projetos",
+        "contact": "Contato"
+    },
+    "hero": {
+        "greeting": "Olá, eu sou",
+        "role": "Engenheiro de Software Full Stack",
+        "description": "Apaixonado por criar aplicações web robustas e escaláveis. Experiente em tecnologias frontend e backend."
+    },
+    "buttons": {
+        "downloadCV": "Baixar meu CV",
+        "contact": "Entre em contato!"
+    },
+    "experience": {
+        "title": "Já trabalhei com estas empresas e tecnologias"
+    },
+    "projects": {
+        "construct": "Em construção..."
+    }
+}
