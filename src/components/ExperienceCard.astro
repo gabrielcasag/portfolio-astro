@@ -20,11 +20,13 @@ const { jobTitle, jobDescription, jobPeriod, jobType, company, skills } =
 <li class="card">
   <!-- <span id="bg"></span> -->
   <!-- <span id="backdrop"></span> -->
-  <div id="content">
-    <h4>{jobTitle}</h4>
-    <small class="skill-pill">{jobType}</small>
-    <span id="company">{company}</span>
-    <span>{jobPeriod}</span>
+  <div id="card__content">
+    <div id="card__head">
+      <h4>{jobTitle}</h4>
+      <small class="skill-pill">{jobType}</small>
+      <span id="company">{company}</span>
+      <span>{jobPeriod}</span>
+    </div>
     <p>
       {jobDescription}
     </p>
@@ -120,7 +122,11 @@ const { jobTitle, jobDescription, jobPeriod, jobType, company, skills } =
     border-radius: var(--radius);
   }*/
 
-  #content {
+  #card__head {
+    max-width: 75%;
+  }
+
+  #card__content {
     z-index: 2;
     position: relative;
     color: white;
@@ -129,13 +135,13 @@ const { jobTitle, jobDescription, jobPeriod, jobType, company, skills } =
     border-radius: var(--radius);
   }
 
-  #content h4 {
+  #card__content h4 {
     font-size: 1.25rem;
     line-height: 1.75rem;
     font-weight: bold;
   }
 
-  #content span {
+  #card__content span {
     font-size: 0.875rem;
     display: block;
     opacity: 0.9;
@@ -145,7 +151,7 @@ const { jobTitle, jobDescription, jobPeriod, jobType, company, skills } =
     }
   }
 
-  #content small {
+  #card__content small {
     font-size: 0.75rem;
     font-weight: bold;
     position: absolute;
@@ -153,7 +159,7 @@ const { jobTitle, jobDescription, jobPeriod, jobType, company, skills } =
     top: 1rem;
   }
 
-  #content p {
+  #card__content p {
     text-align: justify;
     margin-top: 0.75rem;
     font-size: 0.875rem;
@@ -166,7 +172,7 @@ const { jobTitle, jobDescription, jobPeriod, jobType, company, skills } =
 				overflow: hidden; */
   }
 
-  #content b {
+  #card__content b {
     display: inline-block;
     margin: 1rem 0 0.25rem 0;
   }
@@ -174,6 +180,8 @@ const { jobTitle, jobDescription, jobPeriod, jobType, company, skills } =
   #stack__container {
     display: flex;
     column-gap: 1rem;
+    overflow-x: scroll;
+    scrollbar-width: 0;
   }
 
   .skill-pill {
@@ -195,6 +203,10 @@ const { jobTitle, jobDescription, jobPeriod, jobType, company, skills } =
     &:hover {
       filter: brightness(120%);
     }
+  }
+
+  .skill-pill span {
+    white-space: nowrap;
   }
 </style>
 

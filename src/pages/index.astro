@@ -5,9 +5,9 @@ import Button from "../components/Button.astro";
 import Divisor from "../components/Divisor.astro";
 import Layout from "../layouts/Layout.astro";
 import ExperienceCard from "../components/ExperienceCard.astro";
+import NameTag from "../components/NameTag.astro";
 
 import { experiencesEn } from "../experiences.ts";
-import NameTag from "../components/NameTag.astro";
 
 changeLanguage("en");
 ---
@@ -56,10 +56,9 @@ changeLanguage("en");
 
 <style>
   #hero__section {
-    padding: 4rem 3rem;
     text-align: center;
     max-width: 44rem;
-    margin: 0 auto;
+    margin: 3rem auto;
   }
 
   #hero__section #hand__emoji {
@@ -101,7 +100,7 @@ changeLanguage("en");
   Experience and Techs Section 
 */
   #experience__section {
-    margin-top: 5rem;
+    /* margin-top: 5rem; */
   }
 
   #experience__section h2 {
