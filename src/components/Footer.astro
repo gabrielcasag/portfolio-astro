@@ -1,0 +1,78 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<footer>
+    <div class="content">
+        <small>Copyright {new Date().getFullYear()}</small>
+        <small>Desenvolvido com ❤️ e <Icon name="skill-icons:astro" /> </small>
+    </div>
+</footer>
+
+<style>
+    footer {
+        margin-top: 2rem;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 0;
+        transition: height 0.3s ease-out;
+        border-top-left-radius: var(--radius);
+        border-top-right-radius: var(--radius);
+        background-color: var(--foreground);
+        color: var(--background);
+        overflow: hidden;
+    }
+
+    footer.expanded {
+        height: 200px;
+    }
+
+    footer div.content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 800px;
+        height: 100%;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+</style>
+
+<script>
+    const footer = document.querySelector("footer");
+    const content = document.querySelector("main");
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    function updateFooter() {
+        const scrolledToBottom =
+            window.innerHeight + window.scrollY >=
+            document.body.offsetHeight - 10;
+
+        if (scrolledToBottom) {
+            footer!.classList.add("expanded");
+            // content!.style.marginBottom = "200px";
+        } else {
+            footer!.classList.remove("expanded");
+            // content!.style.marginBottom = "60px";
+        }
+
+        ticking = false;
+    }
+
+    window.addEventListener("scroll", () => {
+        lastScrollY = window.scrollY;
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                updateFooter();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+
+    // Inicializar o estado do footer
+    updateFooter();
+</script>

@@ -9,6 +9,7 @@ import i18next, { t } from "i18next";
 import { HeadHrefLangs } from "astro-i18next/components";
 import Header from "../components/Header.astro";
 import BackToTop from "../components/BackToTop.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <!doctype html>
@@ -33,6 +34,7 @@ import BackToTop from "../components/BackToTop.astro";
       <slot />
     </main>
     <BackToTop />
+    <Footer />
   </body>
 </html>
 
@@ -96,8 +98,12 @@ import BackToTop from "../components/BackToTop.astro";
   #app {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 0 1rem;
     text-align: center;
+
+    main {
+      padding-bottom: 300px;
+    }
   }
 
   @media (prefers-color-scheme: light) {
