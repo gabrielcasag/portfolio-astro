@@ -58,7 +58,8 @@ changeLanguage("en");
   #hero__section {
     text-align: center;
     max-width: 44rem;
-    margin: 3rem auto;
+    margin: 0 auto;
+    padding: var(--space-2xl) 0;
   }
 
   #hero__section #hand__emoji {
@@ -78,12 +79,12 @@ changeLanguage("en");
     }
 
     h3 {
-      margin-top: 0.5rem;
+      margin-top: var(--space-sm);
       font-weight: 500;
     }
 
     p {
-      margin-top: 1rem;
+      margin-top: var(--space-md);
       opacity: 0.9;
     }
   }
@@ -93,7 +94,7 @@ changeLanguage("en");
     column-gap: 1rem;
     align-items: center;
     justify-content: center;
-    margin-top: 2.25rem;
+    margin-top: var(--space-2xl);
   }
 
   /* 
@@ -103,11 +104,8 @@ changeLanguage("en");
     /* margin-top: 5rem; */
   }
 
-  #experience__section h2 {
-    margin-bottom: 2.5rem;
-  }
-
   #experience__section .card__grid {
+    margin-top: var(--space-xl);
     max-width: 100%;
     display: flex;
     align-items: center;
@@ -117,22 +115,8 @@ changeLanguage("en");
   }
 
   #experience__section #stack__container {
-    margin-top: 0.875rem;
+    margin-top: var(--space-md);
     display: flex;
     column-gap: 1rem;
-
-    li {
-      display: inline-block;
-      background-color: var(--foreground);
-      color: var(--background);
-      padding: 0.25rem 0.5rem;
-      border-radius: var(--radius);
-      font-size: 0.875rem;
-      font-weight: 600;
-
-      &:hover {
-        filter: brightness(120%);
-      }
-    }
   }
 </style>

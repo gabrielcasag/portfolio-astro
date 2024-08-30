@@ -130,7 +130,7 @@ const { jobTitle, jobDescription, jobPeriod, jobType, company, skills } =
     z-index: 2;
     position: relative;
     color: white;
-    padding: 1rem;
+    padding: var(--space-md);
     background-color: rgba(10, 10, 10, 0.8);
     border-radius: var(--radius);
   }
@@ -161,7 +161,7 @@ const { jobTitle, jobDescription, jobPeriod, jobType, company, skills } =
 
   #card__content p {
     text-align: justify;
-    margin-top: 0.75rem;
+    margin-top: var(--space-sm);
     font-size: 0.875rem;
     line-height: 1.5rem;
 
@@ -174,10 +174,11 @@ const { jobTitle, jobDescription, jobPeriod, jobType, company, skills } =
 
   #card__content b {
     display: inline-block;
-    margin: 1rem 0 0.25rem 0;
+    margin-top: var(--space-md);
   }
 
   #stack__container {
+    margin-top: var(--space-xs);
     display: flex;
     column-gap: 1rem;
     overflow-x: scroll;
@@ -192,7 +193,7 @@ const { jobTitle, jobDescription, jobPeriod, jobType, company, skills } =
     background-color: var(--foreground);
     color: var(--background);
 
-    padding: 0.25rem 0.5rem;
+    padding: var(--space-xs) var(--space-sm);
     border-radius: var(--radius);
 
     font-size: 0.875rem;

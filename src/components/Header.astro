@@ -42,7 +42,7 @@ import NameTag from "./NameTag.astro";
 <style>
     header {
         border: 0.15rem solid var(--border);
-        padding: 1rem;
+        padding: var(--space-md);
         border-radius: var(--radius);
 
         display: flex;
@@ -86,8 +86,8 @@ import NameTag from "./NameTag.astro";
     .language__selector {
         background: none;
         border: none;
-        font-weight: bold;
-
+        font-weight: 600;
+        color: var(--foreground);
         -webkit-appearance: none;
     }
 
@@ -103,7 +103,7 @@ import NameTag from "./NameTag.astro";
         background: none;
         border: none;
         cursor: pointer;
-        padding: 0.5rem;
+        padding: var(--space-sm);
         position: relative;
     }
 
@@ -112,8 +112,7 @@ import NameTag from "./NameTag.astro";
         width: 25px;
         height: 3px;
         background-color: var(--secondary);
-        /* filter: saturate(400%); */
-        margin: 5px 0;
+        margin: var(--space-xs) 0;
     }
 
     .mobile-menu {
@@ -126,7 +125,7 @@ import NameTag from "./NameTag.astro";
         border: 0.15rem solid var(--border);
         border-radius: var(--radius);
         box-shadow: rgb(51 51 51 / 70%) 2px 4px 4px 2px;
-        padding: 1rem;
+        padding: var(--space-md);
         min-width: 200px;
         z-index: 200;
     }
