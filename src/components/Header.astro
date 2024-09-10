@@ -1,174 +1,179 @@
 ---
 import { t } from "i18next";
 import { LanguageSelector } from "astro-i18next/components";
+
 import NameTag from "./NameTag.astro";
 ---
 
 <header>
-    <a href="/" id="logo">
-        <NameTag />
-    </a>
+  <a href="/" id="logo">
+    <NameTag />
+  </a>
 
-    <nav class="desktop-nav">
-        <a href="" class="menu__item">{t("header.about")}</a>
-        <a href="" class="menu__item">{t("header.experience")}</a>
-        <a href="" class="menu__item">{t("header.projects")}</a>
-        <a href="" class="menu__item">{t("header.contact")}</a>
-        <LanguageSelector
-            showFlag={true}
-            class="language__selector menu__item"
-        />
+  <div class="desktop__menu">
+    <nav class="desktop__nav">
+      <a href="" class="menu__item">{t("header.about")}</a>
+      <a href="" class="menu__item">{t("header.experience")}</a>
+      <a href="" class="menu__item">{t("header.projects")}</a>
+      <a href="" class="menu__item">{t("header.contact")}</a>
+      <LanguageSelector showFlag={true} class="language__selector menu__item" />
     </nav>
+  </div>
 
-    <button class="mobile-menu-button" aria-label="Menu">
-        <span></span>
-        <span></span>
-    </button>
+  <button class="mobile__menu__button" aria-label="Menu">
+    <span></span>
+    <span></span>
+  </button>
 
-    <div class="mobile-menu">
-        <nav>
-            <a href="" class="menu__item">{t("header.about")}</a>
-            <a href="" class="menu__item">{t("header.experience")}</a>
-            <a href="" class="menu__item">{t("header.projects")}</a>
-            <a href="" class="menu__item">{t("header.contact")}</a>
-            <LanguageSelector
-                showFlag={true}
-                class="language__selector menu__item"
-            />
-        </nav>
-    </div>
+  <div class="mobile__menu">
+    <nav>
+      <a href="" class="menu__item">{t("header.about")}</a>
+      <a href="" class="menu__item">{t("header.experience")}</a>
+      <a href="" class="menu__item">{t("header.projects")}</a>
+      <a href="" class="menu__item">{t("header.contact")}</a>
+      <LanguageSelector showFlag={true} class="language__selector menu__item" />
+    </nav>
+  </div>
 </header>
 
 <style>
-    header {
-        border: 0.15rem solid var(--border);
-        padding: var(--space-md);
-        border-radius: var(--radius);
+  header {
+    border: 0.15rem solid var(--border);
+    padding: var(--space-md);
+    border-radius: var(--radius);
 
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-        backdrop-filter: blur(6px);
-        -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
 
-        position: sticky;
-        top: 1rem;
+    position: sticky;
+    top: 1rem;
 
-        z-index: 100;
-        transition: transform 0.3s ease-in-out;
+    z-index: 100;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  header.hidden {
+    transform: translateY(-200%);
+  }
+
+  header #logo {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+
+  .desktop__nav {
+    display: flex;
+    column-gap: 1.5rem;
+  }
+
+  .desktop__nav a,
+  .mobile__menu a {
+    transition: all 300ms;
+    font-size: 0.875rem;
+
+    &:hover,
+    &:focus,
+    &:focus-visible {
+      filter: brightness(1.05);
+      text-shadow: 0px 0px 4px var(--secondary);
+    }
+  }
+
+  .language__selector {
+    background: none;
+    border: none;
+    font-weight: 600;
+    color: var(--foreground);
+    -webkit-appearance: none;
+  }
+
+  .menu__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .mobile__menu__button {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--space-sm);
+    position: relative;
+  }
+
+  .mobile__menu__button span {
+    display: block;
+    width: 32px;
+    height: 4px;
+    border-radius: var(--radius);
+    background-color: var(--secondary);
+    margin: var(--space-xs) 0;
+
+    box-shadow: rgba(51, 51, 51, 25%) 0px 2px 4px;
+  }
+
+  .mobile__menu {
+    display: none;
+    position: absolute;
+    top: 110%;
+    right: 0;
+
+    background-color: var(--background);
+    border: 0.15rem solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: rgb(51 51 51 / 25%) 2px 4px 4px;
+    padding: var(--space-md);
+    min-width: 200px;
+    z-index: 200;
+  }
+
+  .mobile__menu.active {
+    display: block;
+  }
+
+  .mobile__menu nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 1rem;
+  }
+
+  @media screen and (max-width: 540px) {
+    .desktop__nav {
+      display: none;
     }
 
-    header.hidden {
-        transform: translateY(-200%);
+    .mobile__menu__button {
+      display: block;
     }
-
-    header #logo {
-        font-size: 2rem;
-        line-height: 2.5rem;
-    }
-
-    .desktop-nav {
-        display: flex;
-        column-gap: 1rem;
-    }
-
-    header > nav > a {
-        transition: all 300ms;
-        font-size: 0.875rem;
-
-        &:hover {
-            filter: brightness(1.05);
-            text-shadow: 0px 0px 4px var(--secondary);
-        }
-    }
-
-    .language__selector {
-        background: none;
-        border: none;
-        font-weight: 600;
-        color: var(--foreground);
-        -webkit-appearance: none;
-    }
-
-    .menu__item {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-    }
-
-    .mobile-menu-button {
-        display: none;
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: var(--space-sm);
-        position: relative;
-    }
-
-    .mobile-menu-button span {
-        display: block;
-        width: 25px;
-        height: 3px;
-        background-color: var(--secondary);
-        margin: var(--space-xs) 0;
-    }
-
-    .mobile-menu {
-        display: none;
-        position: absolute;
-        top: 100%;
-        right: 0;
-
-        background-color: var(--background);
-        border: 0.15rem solid var(--border);
-        border-radius: var(--radius);
-        box-shadow: rgb(51 51 51 / 70%) 2px 4px 4px 2px;
-        padding: var(--space-md);
-        min-width: 200px;
-        z-index: 200;
-    }
-
-    .mobile-menu.active {
-        display: block;
-    }
-
-    .mobile-menu nav {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
-        gap: 1rem;
-    }
-
-    @media screen and (max-width: 540px) {
-        .desktop-nav {
-            display: none;
-        }
-
-        .mobile-menu-button {
-            display: block;
-        }
-    }
+  }
 </style>
 
 <script>
-    const mobileMenuButton = document.querySelector(".mobile-menu-button");
-    const mobileMenu = document.querySelector(".mobile-menu");
+  const mobileMenuButton = document.querySelector(".mobile__menu__button");
+  const mobileMenu = document.querySelector(".mobile__menu");
 
+  if (mobileMenu && mobileMenuButton) {
     mobileMenuButton.addEventListener("click", (event) => {
-        event.stopPropagation();
-        mobileMenu.classList.toggle("active");
+      event.stopPropagation();
+      mobileMenu.classList.toggle("active");
     });
 
     document.addEventListener("click", (event) => {
-        if (
-            !mobileMenu.contains(event.target) &&
-            !mobileMenuButton.contains(event.target)
-        ) {
-            mobileMenu.classList.remove("active");
-        }
+      if (
+        !mobileMenu.contains(event.target as Node) &&
+        !mobileMenuButton.contains(event.target as Node)
+      ) {
+        mobileMenu.classList.remove("active");
+      }
     });
+  }
 </script>
